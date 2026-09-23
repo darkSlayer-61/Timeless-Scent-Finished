@@ -31,12 +31,12 @@
                     <h1 class="logo-text d-inline-block fs-4 m-0">Timeless Scent</h1>
                 </a>
 
-                <!-- Right-Side Container for Persistent Cart Icon & Mobile Toggler -->
-                <div class="d-flex align-items-center ms-auto gap-3">
-                    <!-- Real-Time Persistent Cart Badge Link -->
+                <!-- Mobile-Only Right-Side Container (Visible ONLY on Mobile/Tablet) -->
+                <div class="d-flex d-lg-none align-items-center ms-auto gap-3">
+                    <!-- Persistent Cart Badge Link for Mobile -->
                     <a href="#" class="nav-link cart-badge-link position-relative text-white" aria-label="Shopping Cart">
                         <i class="fa-solid fa-cart-shopping fs-5"></i>
-                        <span id="cartCount" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.65rem;">
+                        <span class="cartCountDisplay position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.65rem;">
                             0
                         </span>
                     </a>
@@ -52,6 +52,15 @@
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center nav-menu">
                         <li class="nav-item">
                             <a href="index.html" class="nav-link">Home</a>
+                        </li>
+                        <!-- Desktop-Only Cart Item (Visible ONLY on Desktop) -->
+                        <li class="nav-item d-none d-lg-flex align-items-center">
+                            <a href="#" class="nav-link cart-badge-link position-relative text-white" aria-label="Shopping Cart">
+                                <i class="fa-solid fa-cart-shopping fs-5"></i>
+                                <span class="cartCountDisplay position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.65rem;">
+                                    0
+                                </span>
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -403,7 +412,7 @@
     <!-- Cart & Modal Script Logic -->
     <script>
         let cartCount = 0;
-        const cartBadge = document.getElementById('cartCount');
+        const cartBadges = document.querySelectorAll('.cartCountDisplay');
         const buttons = document.querySelectorAll('.add-to-cart-btn');
         const modalProductName = document.getElementById('modalProductName');
         
@@ -414,7 +423,10 @@
         buttons.forEach(button => {
             button.addEventListener('click', () => {
                 cartCount++;
-                cartBadge.textContent = cartCount;
+                // Update both cart badge displays (desktop and mobile) simultaneously
+                cartBadges.forEach(badge => {
+                    badge.textContent = cartCount;
+                });
                 
                 // Get product name from the button's data attribute
                 const productName = button.getAttribute('data-name');
