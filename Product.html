@@ -31,24 +31,27 @@
                     <h1 class="logo-text d-inline-block fs-4 m-0">Timeless Scent</h1>
                 </a>
 
-                <!-- Mobile Responsive Toggle Button -->
-                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScheduleContent" aria-controls="navbarScheduleContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                <!-- Right-Side Container for Persistent Cart Icon & Mobile Toggler -->
+                <div class="d-flex align-items-center ms-auto gap-3">
+                    <!-- Real-Time Persistent Cart Badge Link -->
+                    <a href="#" class="nav-link cart-badge-link position-relative text-white" aria-label="Shopping Cart">
+                        <i class="fa-solid fa-cart-shopping fs-5"></i>
+                        <span id="cartCount" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.65rem;">
+                            0
+                        </span>
+                    </a>
 
+                    <!-- Mobile Responsive Toggle Button -->
+                    <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScheduleContent" aria-controls="navbarScheduleContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+
+                <!-- Collapsible Navigation Menu Links -->
                 <div class="collapse navbar-collapse" id="navbarScheduleContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center nav-menu">
                         <li class="nav-item">
                             <a href="index.html" class="nav-link">Home</a>
-                        </li>
-                        <!-- Cart Badge Link -->
-                        <li class="nav-item ms-lg-3">
-                            <a href="#" class="nav-link cart-badge-link position-relative">
-                                <i class="fa-solid fa-cart-shopping"></i> Cart
-                                <span id="cartCount" class="position-absolute top-25 start-100 translate-middle badge rounded-pill bg-danger">
-                                    0
-                                </span>
-                            </a>
                         </li>
                     </ul>
                 </div>

@@ -104,6 +104,15 @@ header .navbar {
     color: #D4AF37; /* Soft luxury gold accent on hover */
 }
 
+/* Persistent Cart Badge Link Styling */
+.cart-badge-link {
+    transition: color 0.3s ease;
+}
+
+.cart-badge-link:hover {
+    color: #D4AF37 !important; /* Luxury gold accent on hover */
+}
+
 /* Mobile Navbar Dropdown Styling */
 @media (max-width: 991.98px) {
     .navbar-collapse {
