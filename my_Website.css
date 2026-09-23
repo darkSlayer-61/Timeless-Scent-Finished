@@ -1,3 +1,4 @@
+/* --- GLOBAL RESET & LAYOUT FIXES FOR MOBILE --- */
 * {
     margin: 0;
     padding: 0;
@@ -10,22 +11,20 @@
     --color-dark: #333333;
     --color-gray: #6e6e6e;
     --color-light-gray: #e6e2dc;
-    --color-off-white: #FAF8F5; /* Luxury Warm Cream Background */
+    --color-off-white: #FAF8F5;
     --color-white: #ffffff;
-    --color-gold: #D4AF37; /* Luxury Accent Gold */
+    --color-gold: #D4AF37;
 
     --radius-s: 8px;
     --radius-m: 40px;
 }
 
-html {
+html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden !important;
+    position: relative;
     scroll-behavior: smooth;
-}
-
-body {
-    color: var(--color-dark);
-    background-color: var(--color-white);
-    overflow-x: hidden;
 }
 
 ul {
@@ -38,17 +37,26 @@ a {
 
 .section-content {
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 15px;
     max-width: 1200px;
+    width: 100%;
 }
 
+/* Prevent Bootstrap row gutters from spilling out horizontally */
+.row {
+    --bs-gutter-x: 0rem;
+    margin-right: 0;
+    margin-left: 0;
+}
+
+/* --- HEADER & NAVBAR --- */
 header {
     background-color: var(--color-black);
     border-bottom: 1px solid rgba(212, 175, 55, 0.2);
     position: sticky;
     top: 0;
     z-index: 1000;
-    transition: all 0.3s ease;
+    width: 100%;
 }
 
 header.scrolled {
@@ -56,52 +64,78 @@ header.scrolled {
 }
 
 .navbar {
-    padding: 18px 20px;
+    padding: 15px 15px;
+    width: 100%;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    max-width: 75%;
+    overflow: hidden;
 }
 
 .nav-logo .logo-text {
     font-family: "Cinzel", serif;
     color: var(--color-white);
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     font-weight: 700;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.brand-logo-img {
+    height: 30px;
+    width: auto;
+    object-fit: contain;
+}
+
+/* NAVBAR TOGGLER ICON FIXED TO PURE WHITE */
+.navbar-toggler {
+    padding: 6px 10px;
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+    width: 1.4em;
+    height: 1.4em;
+}
+
+.navbar-collapse {
+    width: 100%;
 }
 
 .nav-menu {
-    gap: 12px;
+    gap: 8px;
 }
 
 .nav-menu .nav-link {
     color: var(--color-white);
-    padding: 8px 14px;
+    padding: 8px 12px;
     font-size: 0.85rem;
     letter-spacing: 1px;
     text-transform: uppercase;
     transition: color 0.3s ease;
-    white-space: nowrap;
 }
 
 .nav-menu .nav-link:hover {
     color: var(--color-gold);
 }
 
-@media (max-width: 991px) {
-    .navbar-collapse {
-        background-color: var(--color-black);
-        padding: 15px 20px;
-        border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-        margin-top: 15px;
-        border-radius: var(--radius-s);
-    }
-    
-    .navbar-toggler-icon {
-        filter: invert(1);
-    }
+/* --- HERO SECTION --- */
+.hero {
+    width: 100%;
+    overflow: hidden;
 }
 
 .hero-img {
     width: 100%;
-    height: 440px;
+    max-width: 100%;
+    height: 400px;
     object-fit: cover;
     filter: grayscale(100%) brightness(95%);
     transition: filter 0.6s ease, transform 0.6s ease;
@@ -112,39 +146,43 @@ header.scrolled {
     transform: scale(1.01);
 }
 
+/* --- PRODUCT SPOTLIGHT --- */
 .product-spotlight {
-    padding: 100px 0;
+    padding: 80px 0;
     background-color: var(--color-off-white);
+    width: 100%;
 }
 
 .product-spotlight-frame {
     background-color: var(--color-white);
     border-radius: var(--radius-s);
-    padding: 50px;
+    padding: 30px;
     text-align: center;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.04);
     position: relative;
     overflow: hidden;
     border: 1px solid rgba(212, 175, 55, 0.2);
+    width: 100%;
 }
 
 .spotlight-badge {
     position: absolute;
-    top: 20px;
-    left: 20px;
+    top: 15px;
+    left: 15px;
     background-color: var(--color-gold);
     color: var(--color-white);
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     letter-spacing: 1.5px;
     text-transform: uppercase;
-    padding: 4px 12px;
+    padding: 4px 10px;
     border-radius: var(--radius-m);
     font-weight: 600;
 }
 
 .spotlight-img {
-    max-height: 360px;
+    max-height: 320px;
     width: 100%;
+    max-width: 100%;
     object-fit: contain;
     transition: all 0.4s ease;
 }
@@ -161,17 +199,17 @@ header.scrolled {
 
 .spotlight-desc {
     color: var(--color-gray);
-    font-size: 0.95rem;
-    line-height: 1.8;
+    font-size: 0.9rem;
+    line-height: 1.7;
     margin-bottom: 20px;
 }
 
 .scent-notes {
     background: var(--color-white);
-    padding: 16px 20px;
+    padding: 14px 18px;
     border-radius: var(--radius-s);
     border-left: 3px solid var(--color-gold);
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     color: var(--color-dark);
     box-shadow: 0 4px 12px rgba(0,0,0,0.02);
 }
@@ -180,24 +218,22 @@ header.scrolled {
     margin-bottom: 4px;
 }
 
-.note-item:last-child {
-    margin-bottom: 0;
-}
-
 .badge-stock {
     background-color: #fcf8e3;
     color: #8a6d3b;
-    font-size: 0.75rem;
-    padding: 5px 14px;
+    font-size: 0.72rem;
+    padding: 5px 12px;
     border-radius: var(--radius-m);
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 
+/* --- COLLECTION SECTION --- */
 .collection {
-    padding: 100px 0;
+    padding: 80px 0;
     text-align: center;
+    width: 100%;
 }
 
 .section-tag {
@@ -211,9 +247,9 @@ header.scrolled {
 
 .section-title {
     font-family: "Cinzel", serif;
-    font-size: 2.2rem;
+    font-size: 2rem;
     font-weight: 600;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     color: var(--color-black);
 }
 
@@ -229,25 +265,26 @@ header.scrolled {
 }
 
 .product-box:hover {
-    transform: translateY(-8px);
+    transform: translateY(-5px);
 }
 
 .product-frame {
     background-color: var(--color-off-white);
     border-radius: var(--radius-s);
-    padding: 30px;
-    margin-bottom: 16px;
+    padding: 20px;
+    margin-bottom: 14px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.02);
     border: 1px solid rgba(212, 175, 55, 0.1);
-    height: 260px;
+    height: 240px;
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
 }
 
 .product-name {
     font-family: "Cinzel", serif;
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     margin-bottom: 2px;
     font-weight: 600;
 }
@@ -264,22 +301,24 @@ header.scrolled {
     font-weight: 600;
 }
 
+/* --- TESTIMONIALS & REVIEWS --- */
 .testimonials {
     background-color: var(--color-off-white);
-    padding: 100px 0;
+    padding: 80px 0;
     text-align: center;
+    width: 100%;
 }
 
 .review-subtitle {
     font-size: 0.7rem;
     letter-spacing: 2px;
     color: var(--color-gold);
-    margin-bottom: 40px;
+    margin-bottom: 35px;
     font-weight: 600;
 }
 
 .testimonials-row {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .extra-reviews {
@@ -288,6 +327,7 @@ header.scrolled {
 
 .extra-reviews.show-reviews {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .review-box {
@@ -298,21 +338,8 @@ header.scrolled {
     text-align: left;
     padding-top: 16px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.03);
-    transition: transform 0.3s ease;
     border: 1px solid rgba(212, 175, 55, 0.15);
-}
-
-.review-box:hover {
-    transform: translateY(-6px);
-}
-
-.review-header-label {
-    padding: 0 20px 8px 20px;
-    color: var(--color-gray);
-    font-size: 0.8rem;
-    display: flex;
-    align-items: center;
-    gap: 6px;
+    width: 100%;
 }
 
 .review-stars {
@@ -325,7 +352,7 @@ header.scrolled {
 .review-name {
     padding: 0 20px;
     font-weight: 600;
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     margin-top: 6px;
 }
 
@@ -343,23 +370,23 @@ header.scrolled {
 .review-title {
     padding: 0 20px;
     font-weight: 600;
-    font-size: 0.9rem;
-    margin-top: 6px;
+    font-size: 0.88rem;
+    margin-top: 4px;
 }
 
 .review-text {
-    padding: 6px 20px 24px 20px;
+    padding: 6px 20px 20px 20px;
     color: var(--color-gray);
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     line-height: 1.6;
 }
 
 .btn-main {
     background-color: var(--color-black);
     color: var(--color-white);
-    padding: 12px 32px;
+    padding: 12px 28px;
     border-radius: var(--radius-m);
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     letter-spacing: 1px;
     text-transform: uppercase;
     transition: all 0.3s ease;
@@ -370,21 +397,22 @@ header.scrolled {
     background-color: var(--color-gold);
     transform: translateY(-2px);
     color: var(--color-white);
-    box-shadow: 0 6px 15px rgba(212, 175, 55, 0.3);
 }
 
+/* --- PERKS SECTION --- */
 .perks {
-    padding: 70px 0;
+    padding: 60px 0;
     text-align: center;
+    width: 100%;
 }
 
 .perk-box {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .perk-icon {
-    font-size: 1.8rem;
-    margin-bottom: 12px;
+    font-size: 1.6rem;
+    margin-bottom: 10px;
     color: var(--color-gold);
 }
 
@@ -398,43 +426,50 @@ header.scrolled {
 
 .perk-text {
     color: var(--color-gray);
-    font-size: 0.85rem;
+    font-size: 0.82rem;
 }
 
-/* Footer Styling */
+/* --- FOOTER --- */
 footer {
     background-color: var(--color-black);
-    padding: 50px 0 30px 0;
+    padding: 40px 0 25px 0;
     text-align: left;
     border-top: 1px solid rgba(212, 175, 55, 0.2);
+    width: 100%;
 }
 
 .footer-brand-title {
     font-family: "Cinzel", serif;
     color: var(--color-white);
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: 700;
     letter-spacing: 2px;
+}
+
+.footer-logo-img {
+    height: 32px;
+    width: auto;
+    object-fit: contain;
 }
 
 .footer-thank-you {
     font-family: "Cinzel", serif;
     color: var(--color-gold);
-    font-size: 0.95rem;
-    letter-spacing: 1.5px;
+    font-size: 0.88rem;
+    letter-spacing: 1px;
     font-weight: 600;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
 }
 
 .footer-contact-hint {
     color: var(--color-gray);
-    font-size: 0.82rem;
+    font-size: 0.78rem;
 }
 
 .footer-purpose-text {
     color: var(--color-light-gray);
-    font-size: 0.88rem;
-    line-height: 1.7;
+    font-size: 0.82rem;
+    line-height: 1.6;
     margin-bottom: 0;
 }
 
@@ -444,31 +479,21 @@ footer {
 
 .footer-text {
     color: var(--color-gray);
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     letter-spacing: 0.5px;
 }
 
-.fade-in {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.fade-in.show-fade {
-    opacity: 1;
-    transform: translateY(0);
-}
-
+/* --- BACK TO TOP BUTTON --- */
 .top-btn {
     position: fixed;
-    bottom: 24px;
-    right: 24px;
-    width: 44px;
-    height: 44px;
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     background-color: var(--color-gold);
     color: var(--color-white);
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     opacity: 0;
     visibility: hidden;
     transform: translateY(10px);
@@ -484,30 +509,51 @@ footer {
     transform: translateY(0);
 }
 
+/* --- MOBILE RESPONSIVE MEDIA QUERY OVERRIDES --- */
 @media (max-width: 991px) {
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 15px;
+    }
+
+    .navbar-collapse {
+        background-color: var(--color-black);
+        padding: 15px;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        margin-top: 12px;
+        border-radius: var(--radius-s);
+    }
+
+    .nav-logo {
+        max-width: 75%;
+        overflow: hidden;
+    }
+
+    .nav-logo .logo-text {
+        font-size: 0.95rem; /* Clean mobile scale for Timeless Scent title */
+        letter-spacing: 1px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
     .hero-img {
-        height: 260px;
+        height: 240px;
     }
 
     .section-title {
-        font-size: 1.6rem;
+        font-size: 1.5rem;
+        margin-bottom: 20px;
     }
 
     .collection,
     .testimonials,
     .product-spotlight {
-        padding: 60px 0;
+        padding: 50px 0;
     }
-}
 
-.brand-logo-img {
-    height: 32px;
-    width: auto;
-    object-fit: contain;
-}
-
-.footer-logo-img {
-    height: 36px;
-    width: auto;
-    object-fit: contain;
+    .product-spotlight-frame {
+        padding: 20px;
+    }
 }
